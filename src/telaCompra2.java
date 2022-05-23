@@ -8,27 +8,13 @@
  *
  * @author Lucas
  */
-public class telaLocacoes extends javax.swing.JFrame {
+public class telaCompra2 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form locacaoRealizada
-     */
-    public telaLocacoes() {
+static dados Dados;
+    public telaCompra2(dados Dados) {
+        this.Dados = Dados;
         initComponents();
-        String infoLocacoes="";
-        boolean locacaoRealizada=false;
-        for(int i=0;i<dados.numContratos; i++){
-            if(dados.loginUser.getLogin() == dados.contratos[i].getLoginCliente()){
-            locacaoRealizada = true;
-            infoLocacoes+=dados.contratos[i].infoLocacao()+"<html><br>________________________________________<br>";
-            }
-    }
-        if(!locacaoRealizada){
-            locacoes.setText("Você não possui nenhuma locação feita");
-        }
-        else{
-            locacoes.setText(infoLocacoes);
-        }
+      info.setText(dados.pedidosCliente[dados.numPedidosCliente-1].infoPedido());
     }
 
     /**
@@ -40,27 +26,27 @@ public class telaLocacoes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        voltarMenu = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        locacoes = new javax.swing.JLabel();
+        info = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setText("Suas locações");
+        info.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        info.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jScrollPane1.setViewportView(info);
 
-        voltarMenu.setText("Voltar ao menu");
-        voltarMenu.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setText("Informações do pedido");
+
+        voltar.setText("Voltar ao menu");
+        voltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarMenuActionPerformed(evt);
+                voltarActionPerformed(evt);
             }
         });
-
-        locacoes.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        locacoes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jScrollPane1.setViewportView(locacoes);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,38 +55,38 @@ public class telaLocacoes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addComponent(voltarMenu))
+                        .addGap(90, 90, 90)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(205, 205, 205)
+                        .addGap(152, 152, 152)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(156, Short.MAX_VALUE))
+                        .addGap(184, 184, 184)
+                        .addComponent(voltar)))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(36, 36, 36)
                 .addComponent(jLabel1)
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                .addComponent(voltarMenu)
-                .addGap(26, 26, 26))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
+                .addComponent(voltar)
+                .addGap(29, 29, 29))
         );
 
-        setSize(new java.awt.Dimension(623, 634));
+        setSize(new java.awt.Dimension(493, 536));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void voltarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarMenuActionPerformed
-      
-        telaPrincipal tPrincipal = new telaPrincipal();
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        telaPrincipal tPrincipal = new telaPrincipal(Dados);
         tPrincipal.setVisible(true);
         dispose();
-    }//GEN-LAST:event_voltarMenuActionPerformed
+        
+    }//GEN-LAST:event_voltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,29 +105,28 @@ public class telaLocacoes extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(telaLocacoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(telaCompra2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(telaLocacoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(telaCompra2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(telaLocacoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(telaCompra2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(telaLocacoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(telaCompra2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new telaLocacoes().setVisible(true);
+                new telaCompra2(Dados).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel info;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel locacoes;
-    private javax.swing.JButton voltarMenu;
+    private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
 }

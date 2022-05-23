@@ -1,21 +1,24 @@
 public class Pagamento {
-    
-    String nome;
-    int numCartao;
-    int codSeguranca;
-    String cpf;
-    String endereco;
-    
-    public Pagamento(String nome, int numCartao, int codSeguranca, String cpf, String endereco){
-    this.nome = nome;
-    this.numCartao = numCartao;
-    this.codSeguranca = codSeguranca;
-    this.cpf = cpf;
-    this.endereco = endereco;
-    }
-    
-    public String infoPagamento(){
-    String info = "<html><br>\nNome: "+nome+"<br>\nNúmero do cartão: "+numCartao+"<br>\nCódigo de segurança: "+codSeguranca+"<br>\nCPF: "+cpf+"<br>\nEndereço: "+endereco+"<br>\n";
-    return info;
-    }
+	public String nome;
+	public int numCartao;
+	public int codSeguranca;
+        public String email;
+        public String cpf;
+        public double valor;
+
+        public Pagamento(String nome, int numCartao, int codSeguranca, String email, String cpf, double valor){
+        this.nome = nome;
+        this.valor = valor;
+        this.numCartao = numCartao;
+        this.codSeguranca = codSeguranca;
+        this.email = email;
+        this.cpf = cpf;
+        }
+        
+	public void efetuarPagamento() {
+	}
+        
+        public String infoPagamento(){
+        return "<html>Nome: "+ nome +"<br>Número do cartão: "+numCartao+"<br>Código de segurança: "+codSeguranca+"<br>CPF: "+cpf+"<br>E-mail: "+email+"<br>Valor total: R$"+valor+"<br><br>";
+        }
 }

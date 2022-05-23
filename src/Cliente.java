@@ -1,38 +1,36 @@
 public class Cliente {
 	public String nome;
 	public String cpf;
+        public String email;
 	public String endereco;
-	public String email;
 	public String login;
 	public String senha;
-        
-        public Cliente(String nome, String cpf, String endereco, String email, String login, String senha){
+	
+        public Cliente(String nome,String email, String cpf, String endereco, String login, String senha){
         this.nome = nome;
+        this.email = email;
         this.cpf = cpf;
         this.endereco = endereco;
-        this.email = email;
         this.login = login;
         this.senha = senha;
         }
         
-        public boolean logar(String login, String senha){
-        if (this.login.equals(login) && this.senha.equals(senha)){
-        return true;
-        }
-        else{return false;}
+        public boolean validarLogin(String login, String senha){
+            if(this.login.equals(login)&& this.senha.equals(senha)){
+            return true;
+            }
+            else{return false;}
         }
         
         public String getLogin(){
-        return login;
-        }
-        
-        public String infoCliente(){
-        String info = "<html><br>\nNome: "+nome+"<br>\ncpf: "+cpf+"<br>\nEndereco: "+ endereco+"<br>\nEmail: "+ email;
-        return info;
+            return login;
         }
         
         public String getNome(){
-        return nome;
+            return nome;
         }
-} 
-
+        
+        public String infoCliente(){
+        return "<html>Nome: "+nome+"<br>E-mail: "+email+"<br>CPF: "+cpf+"<br>Endereço: "+endereco+"<br>Login: "+login;
+        }
+}

@@ -7,16 +7,14 @@ public class ES {
  }
  public static String input(String msg) {
  System.out.print(msg);
- String s = scanner.nextLine();
+ String s;
+ s = scanner.nextLine();
  return s;
  }
- public static int toInt(String s) {
- int i = Integer.parseInt(s);
- return i;
- }
  public static double toDouble(String s) {
- double d;
- d = Double.parseDouble(s);
- return d;
+ return Double.parseDouble(s);
+ }
+ public static int toInt(String s) {
+ return Integer.parseInt(s);
  }
 }
